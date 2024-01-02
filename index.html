@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Projet Machine Learning</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <h1>Projet Machine Learning</h1>
+    <form id="form-csv">
+        <label for="input-csv">Veuillez sélectionnez une dataset :</label>
+        <input type="file" id="input-csv" name="csv" accept=".csv">
+        <button type="submit" id="button-submit">Entrainer</button>
+    </form>
+
+    <div id="result"></div>
+    
+    <div class="input-container">
+        <label>Entrer des valeurs pour la prédiction :</label>
+        <input type="number" id="value1" placeholder="paramètre 1">
+        <input type="number" id="value2" placeholder="paramètre 2">
+        <input type="number" id="value3" placeholder="paramètre 3">
+        <input type="number" id="value4" placeholder="paramètre 4">
+        <button type="button" id="button-predict">Prédire</button>
+    </div>
+  
+
+    <div id="prediction-result"></div>
+    <script src='config.js'></script>
+    <script src="script.js"></script>
+</body>
+</html>
