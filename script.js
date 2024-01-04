@@ -81,7 +81,7 @@ xhr.addEventListener("load", function() {
         else{
             error="";
         }
-        result.textContent = "An error : " +error ;
+        result.textContent = "Error : " +error ;
     }
 });
 
@@ -93,14 +93,7 @@ const value1 = document.getElementById("value1");
 const value2 = document.getElementById("value2");
 const value3 = document.getElementById("value3");
 const value4 = document.getElementById("value4");
-const value5 = document.getElementById("value5");
-const value6 = document.getElementById("value6");
-const value7 = document.getElementById("value7");
-const value8 = document.getElementById("value8");
-const value9 = document.getElementById("value9");
-const value10 = document.getElementById("value10");
 const predictButton = document.getElementById("button-predict");
-
 
 // Add event listener for predict button
 predictButton.addEventListener("click", function() {
