@@ -3,6 +3,15 @@ const form = document.getElementById("form-csv");
 const input = document.getElementById("input-csv");
 const button = document.getElementById("button-submit");
 const result = document.getElementById("result");
+const modelSelect = document.getElementById("model-select");                                                            //added this
+
+document.querySelectorAll('.dropdown .items a').forEach(item => {
+    item.addEventListener('click', function(event) {
+        event.preventDefault();
+        document.querySelector('.dropdown-title').textContent = this.textContent;
+    });
+});
+
 
 // Créer une requête HTTP
 const xhr = new XMLHttpRequest();
@@ -22,6 +31,11 @@ form.addEventListener("submit", function(e) {
     const formData = new FormData();
     // Ajouter le fichier CSV au FormData
     formData.append("csv_file", file);
+
+    // Add the selected model to your FormData                                                                         //added these 3 lines
+    const selectedModel = modelSelect.value;
+    formData.append("model", selectedModel);
+
     // Ouvrir la requête HTTP avec la méthode POST et l'URL de l'API
     xhr.open("POST", config.train_api );
     // Envoyer le FormData à l'API
@@ -44,10 +58,33 @@ xhr.addEventListener("load", function() {
     }
 });
 
+
+
+const dropdown = document.querySelector('.dropdown');                                                                       //added these
+const placeholder = document.querySelector('.dropdown-placeholder');
+
+dropdown.addEventListener('click', () => {
+    dropdown.classList.toggle('active');
+
+    if (dropdown.classList.contains('active')) {
+        placeholder.style.height = '600px';
+    } else {
+        placeholder.style.height = '0';
+    }
+});
+
+
+
 const value1 = document.getElementById("value1");
 const value2 = document.getElementById("value2");
 const value3 = document.getElementById("value3");
 const value4 = document.getElementById("value4");
+const value5 = document.getElementById("value5");
+const value6 = document.getElementById("value6");
+const value7 = document.getElementById("value7");
+const value8 = document.getElementById("value8");
+const value9 = document.getElementById("value9");
+const value10 = document.getElementById("value10");
 const predictButton = document.getElementById("button-predict");
 
 // Add event listener for predict button
@@ -84,3 +121,74 @@ predictButton.addEventListener("click", function() {
         }
     });
 });
+
+
+
+document.getElementById('addParam').addEventListener('click', addParameter);
+
+
+var parameterCount = 1; // Start from 4, assuming 4 parameters already exist
+
+function addParameter() {
+    parameterCount++;
+
+    var container = document.getElementById('paramContainer');
+    var input = document.createElement('input');
+    input.type = 'number';
+    input.name = 'dynamicParameter[]';
+    input.id = 'value' + parameterCount;
+    input.placeholder = 'Parameter ' + parameterCount;
+
+    container.appendChild(input);
+    container.appendChild(document.createElement('br'));
+}
+
+
+
+// Assuming you have a function to collect data for prediction
+function collectDataForPrediction() {
+    var dynamicParameters = document.querySelectorAll('input[name="dynamicParameter[]"]');
+    var data = {};
+    dynamicParameters.forEach(function(input, index) {
+        data['param' + (index + 1)] = input.value;
+    });
+    // Add existing fixed parameter values to 'data' as well
+    // Send 'data' to your prediction endpoint
+}
+
+document.getElementById('button-predict').addEventListener('click', sendPredictionRequest);
+
+function sendPredictionRequest() {
+    // Collect fixed parameters as before
+    var fixedParam1 = document.getElementById('fixedParam1').value;
+    // ... collect other fixed parameters ...
+
+    // Collect dynamic parameters
+    var dynamicParameters = document.querySelectorAll('input[name="dynamicParameter[]"]');
+    var dynamicData = Array.from(dynamicParameters).map(input => input.value);
+
+    // Combine fixed and dynamic parameters
+    var allParams = { fixedParam1, /* other fixed params, */ dynamicData };
+
+    // Send allParams to your prediction endpoint
+    // For example: makePrediction(allParams);
+}
+
+
+
+document.getElementById('removeParam').addEventListener('click', removeLastParameter);
+
+
+function removeLastParameter() {
+    var container = document.getElementById('paramContainer');
+    // Get the last input element in the container
+    var lastInput = container.querySelector('input[type="number"]:last-of-type');
+    if (lastInput) {
+        // Remove the last input field and its preceding line break
+        container.removeChild(lastInput.nextSibling); // Removing line break
+        container.removeChild(lastInput);
+
+        // Decrement the parameter count
+        parameterCount--;
+    }
+}
