@@ -10,7 +10,7 @@ const xhr = new XMLHttpRequest();
 
 function displayPrediction(prediction) {
     const predictionResult = document.getElementById("prediction-result");
-    predictionResult.textContent = "La prédiction est : " + prediction;
+    predictionResult.textContent = "Prediction: " + prediction;
 }
 
 
@@ -64,7 +64,7 @@ xhr.addEventListener("load", function() {
         
         const data = JSON.parse(response);
       
-        result.textContent = "L'accuracy est de : " + data.accuracy ;
+        result.textContent = "Accuracy : " + data.accuracy ;
     } else {
         if(modelSelect.value == null && input.files[0]== null ){
             error = "Please select a dataset and a model to train ";
@@ -114,7 +114,7 @@ predictButton.addEventListener("click", function() {
             const response = JSON.parse(predictXhr.responseText);
             const prediction = response.predicted;
             displayPrediction(prediction);
-            document.getElementById("prediction-result").textContent = "La prédiction est : " + prediction;
+            document.getElementById("prediction-result").textContent = "Prediction : " + prediction;
         } else {
             document.getElementById("result").textContent = "Erreur : " + JSON.parse(predictXhr.responseText).error;
         }
