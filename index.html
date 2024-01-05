@@ -8,7 +8,6 @@
 
     <title>Projet Machine Learning</title>
     <link rel="stylesheet" href="style.css">
-<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=jFjuXmlgE_MwzeWS9Zpqx1_W_ZSQTn7TLO9vHoBoEkA2Z3xEgl5W0RcsqGTaMT2wOX-dpfxxSGlD21EdfC2s7LwL0WQ4jmPKAkfy93eRaTSeFLAkY5wTFA80yCLQWAsQhE884aAHK1YRHMbHkmVSw1Qh13Cjh74xrMrVaZwk0t2-JMmm8sTDx77b8ra5NcsNsT3oFiZzCyOEXrrsDQpg-51c2ug8X8FEeDKQRPP_lAsPk3NnEx7azm-iv0V9bfTav8dHwpzMRNxZX4fhoDclRgJaHBJoLrLZxb7rG3s-p1JVDwhQYSuRLgLYWJZUaqWfXK8MsGGYyRxUIHG69kN4WSlDb2ZdTAzMdzVFBOEXAGs" charset="UTF-8"></script></head>
 <body>
     
     <h1>Machine Learning Project</h1>
@@ -27,11 +26,11 @@
                 <span class="right-icon"></span>
                 <div class="items">
                     <a href="#" data-value="svm" style="--i:1;"><span></span>Support Vector Machines (SVM)</a>
-                    <a href="#" data-value="knn" style="--i:7;"><span></span>K-Nearest Neighbors (KNN)</a>
-                    <a href="#" data-value="mlp" style="--i:10;"><span></span>MLP (a neural network model)</a>
-                    <a href="#" data-value="logistic_reg" style="--i:3;"><span></span>Logistic Regression</a>
                     <a href="#" data-value="naive_bayes" style="--i:6;"><span></span>Naive Bayes</a>
                     <a href="#" data-value="decision_tree" style="--i:4;"><span></span>Decision Trees</a>
+                    <a href="#" data-value="mlp" style="--i:10;"><span></span>MLP (a neural network model)</a>
+                    <a href="#" data-value="knn" style="--i:7;"><span></span>K-Nearest Neighbors (KNN)</a>
+                    <a href="#" data-value="logistic_reg" style="--i:3;"><span></span>Logistic Regression</a>
                     <a href="#" data-value="ada" style="--i:9;"><span></span>AdaBoost (Adaptive Boosting)</a>
 
                 </div>
@@ -49,14 +48,21 @@
     <div class="input-container">
         <label>Enter values for the prediction:</label>
         <input type="number" id="value1" placeholder="Parameter 1">
-        <input type="number" id="value2" placeholder="Parameter 2">
-        <input type="number" id="value3" placeholder="Parameter 3">
-        <input type="number" id="value4" placeholder="Parameter 4">
+
+        <div id="paramContainer"></div>
+        <div class="button-container">
+        <button id="addParam" type="button">Add Parameter</button>
+        <button id="removeParam" type="button">Remove Last Added Parameter</button>
+        </div>
+
         <button type="button" id="button-predict">Predict</button>
     </div>  
+
 
     <div id="prediction-result"></div>
     <script src='config.js'></script>
     <script src="script.js"></script>
 </body>
 </html>
+
+
