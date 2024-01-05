@@ -10,7 +10,7 @@ const xhr = new XMLHttpRequest();
 
 function displayPrediction(prediction) {
     const predictionResult = document.getElementById("prediction-result");
-    predictionResult.textContent = "Prediction: " + prediction;
+    predictionResult.textContent = "Prediction : " + prediction;
 }
 
 
@@ -21,7 +21,7 @@ dropdown.addEventListener('click', () => {
     dropdown.classList.toggle('active');
 
     if (dropdown.classList.contains('active')) {
-        placeholder.style.height = '600px';
+        placeholder.style.height = '400px';
     } else {
         placeholder.style.height = '0';
     }
